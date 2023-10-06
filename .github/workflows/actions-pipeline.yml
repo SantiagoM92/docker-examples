@@ -1,0 +1,55 @@
+name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_and_push_images:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Docker Login
+      uses: docker/login-action@v3.0.0
+      with:
+        registry: ${{ secrets.AZ_REGISTRY_URL }}
+        username: ${{ secrets.AZ_REGISTRY_USERNAME }}
+        password: ${{ secrets.AZ_REGISTRY_PASS }}
+        logout: true
+    
+    - name: Build and push Docker Svelte Image
+      uses: docker/build-push-action@v5.0.0
+      with:
+        context: .
+        file: svelte/dockerfile
+        push: true
+        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-svelte:latest
+
+    - name: Build and push Docker Scala Image
+      uses: docker/build-push-action@v5.0.0
+      with:
+        context: .
+        file: scala/dockerfile
+        push: true
+        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-scala:latest
+        
+    - name: Build and push Docker Kotlin Image
+      uses: docker/build-push-action@v5.0.0
+      with:
+        context: .
+        file: kotlin/dockerfile
+        push: true
+        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-kotlin:latest
+
+    - name: Build and push Docker Php Image
+      uses: php/build-push-action@v5.0.0
+      with:
+        context: .
+        file: php/dockerfile
+        push: true
+        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-php:latest
+    
