@@ -1,0 +1,13 @@
+#download image with sbt and scala
+FROM sbtscala/scala-sbt:eclipse-temurin-jammy-20.0.2_9_1.9.6_3.3.1
+
+#copy the current directory contents into the container at /app
+COPY . /app
+
+#set the working directory to /app
+WORKDIR /app
+
+#make port 9000 available to the world outside this container
+EXPOSE 9000
+
+ENTRYPOINT ["sbt", "run"]

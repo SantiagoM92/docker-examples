@@ -1,0 +1,25 @@
+#download node image
+FROM node:20
+
+#copy the current directory contents into the container at /app
+COPY . /app
+
+#set the working directory to /app
+WORKDIR /app
+
+#install any needed packages specified in requirements.txt
+RUN npx degit sveltejs/template svelte-app
+
+#set the working directory to /app/svelte-app
+WORKDIR /app/svelte-app
+
+#install any needed packages
+RUN npm install
+
+#build the app
+RUN npm run build
+
+#make port 80 available to the world outside this container
+EXPOSE 8080
+
+ENTRYPOINT ["npm", "start","--","--host", "0.0.0.0"]

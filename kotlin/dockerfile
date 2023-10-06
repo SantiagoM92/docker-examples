@@ -1,0 +1,16 @@
+#image with java8
+FROM amazoncorretto:8
+
+#copy the current directory contents into the container at /app
+COPY . /app
+
+#set the working directory to /app
+WORKDIR /app
+
+#install any needed packages
+RUN ./gradlew build
+
+#make port 9100 available to the world outside this container
+EXPOSE 9100
+
+ENTRYPOINT ["java", "-jar", "build/libs/ktorapp-1.0-SNAPSHOT.jar", "--server.port=9100"]
