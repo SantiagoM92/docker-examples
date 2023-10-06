@@ -25,7 +25,7 @@ jobs:
       uses: docker/build-push-action@v5.0.0
       with:
         context: .
-        file: svelte/dockerfile
+        file: ./svelte/dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-svelte:latest
 
@@ -33,7 +33,7 @@ jobs:
       uses: docker/build-push-action@v5.0.0
       with:
         context: .
-        file: scala/dockerfile
+        file: ./scala/dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-scala:latest
         
@@ -41,7 +41,7 @@ jobs:
       uses: docker/build-push-action@v5.0.0
       with:
         context: .
-        file: kotlin/dockerfile
+        file: ./kotlin/dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-kotlin:latest
 
@@ -49,7 +49,7 @@ jobs:
       uses: php/build-push-action@v5.0.0
       with:
         context: .
-        file: php/dockerfile
+        file: ./php/dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-php:latest
     
