@@ -21,21 +21,21 @@ jobs:
         password: ${{ secrets.AZ_REGISTRY_PASS }}
         logout: true
     
-    - name: Build and push Docker Svelte Image
-      uses: docker/build-push-action@v5.0.0
-      with:
-        context: .
-        file: ./svelte/dockerfile
-        push: true
-        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-svelte:latest
+    # - name: Build and push Docker Svelte Image
+    #   uses: docker/build-push-action@v5.0.0
+    #   with:
+    #     context: .
+    #     file: ./svelte/dockerfile
+    #     push: true
+    #     tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-svelte:latest
 
-    - name: Build and push Docker Scala Image
-      uses: docker/build-push-action@v5.0.0
-      with:
-        context: .
-        file: ./scala/dockerfile
-        push: true
-        tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-scala:latest
+    # - name: Build and push Docker Scala Image
+    #   uses: docker/build-push-action@v5.0.0
+    #   with:
+    #     context: .
+    #     file: ./scala/dockerfile
+    #     push: true
+    #     tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-scala:latest
         
     - name: Build and push Docker Kotlin Image
       uses: docker/build-push-action@v5.0.0
@@ -46,7 +46,7 @@ jobs:
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-kotlin:latest
 
     - name: Build and push Docker Php Image
-      uses: docker/build-push-action@v5.0.0
+      uses: php/build-push-action@v5.0.0
       with:
         context: .
         file: ./php/dockerfile
