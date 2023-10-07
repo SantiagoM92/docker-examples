@@ -41,7 +41,7 @@ jobs:
       uses: docker/build-push-action@v5.0.0
       with:
         context: ./kotlin
-        file: ./dockerfile
+        file: ./kotlin/dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-kotlin:latest
 
