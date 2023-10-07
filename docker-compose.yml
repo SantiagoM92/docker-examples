@@ -1,0 +1,23 @@
+version: '3'
+services:
+  svelte:
+    image: jsmunir.azurecr.io/sample-svelte:latest
+    container_name: svelte-app
+    ports:
+      - "8080:8080"
+  scala:
+    image: jsmunir.azurecr.io/sample-scala:latest
+    container_name: scala-app
+    ports:
+      - "9000:9000"
+  kotlin:
+    image: jsmunir.azurecr.io/sample-kotlin:latest
+    container_name: kotlin-app
+    ports:
+      - "9100:9100"
+  php:
+    image: jsmunir.azurecr.io/sample-php:latest
+    container_name: php-app
+    ports:
+      - "80:80"
+      

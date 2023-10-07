@@ -7,9 +7,9 @@ COPY . /app
 #set the working directory to /app
 WORKDIR /app
 
-RUN ls
-
+#add permission to gradlew
 RUN chmod +x gradlew
+
 #install any needed packages
 RUN ./gradlew build
 

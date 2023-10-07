@@ -7,7 +7,7 @@ COPY . /app
 #set the working directory to /app
 WORKDIR /app
 
-#install any needed packages specified in requirements.txt
+#create svelte app
 RUN npx degit sveltejs/template svelte-app
 
 #set the working directory to /app/svelte-app
