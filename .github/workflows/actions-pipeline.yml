@@ -40,16 +40,16 @@ jobs:
     - name: Build and push Docker Kotlin Image
       uses: docker/build-push-action@v5.0.0
       with:
-        context: .
-        file: ./kotlin/dockerfile
+        context: ./kotlin
+        file: dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-kotlin:latest
 
     - name: Build and push Docker Php Image
       uses: docker/build-push-action@v5.0.0
       with:
-        context: .
-        file: ./php/dockerfile
+        context: ./php
+        file: ./dockerfile
         push: true
         tags: ${{ secrets.AZ_REGISTRY_URL }}/sample-php:latest
     
